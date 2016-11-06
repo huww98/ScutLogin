@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="正在检测"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textSize="48sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:id="@+id/statusText" />
+    <TextView
+        android:text=""
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:id="@+id/errorText" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp">
+        <EditText
+            android:hint="用户名"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:id="@+id/userName" />
+        <EditText
+            android:hint="密码"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:id="@+id/password" />
+        <CheckBox
+            android:text="保存密码"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/savePassword" />
+        <CheckBox
+            android:text="连接时自动登录"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/autoLogin" />
+    </LinearLayout>
+    <Button
+        android:text="登录"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginButton"
+        android:layout_margin="16dp"
+        android:enabled="false" />
+    <Button
+        android:text="注销"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logoutButton"
+        android:layout_margin="16dp"
+        android:visibility="gone" />
+</LinearLayout>

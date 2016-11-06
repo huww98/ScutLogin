@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScutLogin.Droid", "ScutLogin.Droid\ScutLogin.Droid.csproj", "{B0178E8B-516B-47C3-88E4-AA82CE795B4D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ScutLogin.Shared", "ScutLogin.Shared\ScutLogin.Shared.shproj", "{01D7E9F3-D74E-4EAE-AC20-86FFA363F9AD}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ScutLogin.Shared\ScutLogin.Shared.projitems*{01d7e9f3-d74e-4eae-ac20-86ffa363f9ad}*SharedItemsImports = 13
+		ScutLogin.Shared\ScutLogin.Shared.projitems*{b0178e8b-516b-47c3-88e4-aa82ce795b4d}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0178E8B-516B-47C3-88E4-AA82CE795B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0178E8B-516B-47C3-88E4-AA82CE795B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0178E8B-516B-47C3-88E4-AA82CE795B4D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B0178E8B-516B-47C3-88E4-AA82CE795B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0178E8B-516B-47C3-88E4-AA82CE795B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0178E8B-516B-47C3-88E4-AA82CE795B4D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
