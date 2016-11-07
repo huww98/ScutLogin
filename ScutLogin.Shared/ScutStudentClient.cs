@@ -24,7 +24,7 @@ namespace ScutLogin.Shared
         private const string testIfNeedLoginUrl = "http://www.baidu.com/";
         private const string testIfLoggedInUrl = "https://s.scut.edu.cn:801/eportal/?c=ACSetting&a=Login";
 
-        public ScutStudentClientStatus Status { get; set; } = ScutStudentClientStatus.Unknown;
+        public ScutStudentClientStatus Status { get; private set; } = ScutStudentClientStatus.Unknown;
 
         public string WlanAcIp { get; set; }
         public string UserIp { get; set; }
@@ -74,6 +74,11 @@ namespace ScutLogin.Shared
                 }
             }
             return Status;
+        }
+
+        public void ResetStatus()
+        {
+            Status = ScutStudentClientStatus.Unknown;
         }
 
         private async Task testInternet()

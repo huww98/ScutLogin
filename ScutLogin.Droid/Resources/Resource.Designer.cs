@@ -48,13 +48,16 @@ namespace ScutLogin.Droid
 			public const int ic_perm_scan_wifi_white_24dp = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int ic_wifi_lock_white_24dp = 2130837505;
+			public const int ic_refresh_white_24dp = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int logo = 2130837506;
+			public const int ic_wifi_lock_white_24dp = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int logo_about = 2130837507;
+			public const int logo = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int logo_about = 2130837508;
 			
 			static Drawable()
 			{
@@ -69,8 +72,8 @@ namespace ScutLogin.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060008
-			public const int about = 2131099656;
+			// aapt resource value: 0x7f060009
+			public const int about = 2131099657;
 			
 			// aapt resource value: 0x7f060005
 			public const int autoLogin = 2131099653;
@@ -86,6 +89,9 @@ namespace ScutLogin.Droid
 			
 			// aapt resource value: 0x7f060003
 			public const int password = 2131099651;
+			
+			// aapt resource value: 0x7f060008
+			public const int refresh = 2131099656;
 			
 			// aapt resource value: 0x7f060004
 			public const int savePassword = 2131099652;
@@ -149,6 +155,9 @@ namespace ScutLogin.Droid
 			
 			// aapt resource value: 0x7f040001
 			public const int about = 2130968577;
+			
+			// aapt resource value: 0x7f040003
+			public const int refreshStatus = 2130968579;
 			
 			// aapt resource value: 0x7f040002
 			public const int version = 2130968578;

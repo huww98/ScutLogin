@@ -3,4 +3,5 @@
   <string name="ApplicationName">宿舍WLAN</string>
   <string name="about">关于</string>
   <string name="version">版本：1.2</string>
+  <string name="refreshStatus">刷新状态</string>
 </resources>

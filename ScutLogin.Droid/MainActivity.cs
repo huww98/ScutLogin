@@ -5,6 +5,7 @@ using Android.Content;
 using System;
 using Android.Views;
 using Android.Net.Wifi;
+using System.Threading.Tasks;
 
 namespace ScutLogin.Droid
 {
@@ -41,27 +42,34 @@ namespace ScutLogin.Droid
 #else
             userNameEdit.Text = sharedPref.GetString(usernamePrefKey, string.Empty);
 #endif
-
             passwordEdit.Text = sharedPref.GetString(passwordPrefKey, string.Empty);
             savePasswordCheckBox.Checked = sharedPref.GetBoolean(ifSavePasswordPrefKey, false);
             autoLoginCheckBox.Checked = sharedPref.GetBoolean(ifAutoLoginPrefKey, false);
 
-            WifiManager wifi = (WifiManager)GetSystemService(Context.WifiService);
-            if (wifi.ConnectionInfo.SSID.Contains(Shared.ScutStudentClient.wifiSsid))
-            {
-                await client.TryGetStatus();
-            }
-            else
-            {
-                errorText.Text = $"尚未连接{Shared.ScutStudentClient.wifiSsid}";
-            }
+            await getStatus();
 
-            syncStatus();
             if (client.Status == Shared.ScutStudentClientStatus.NeedLogin && autoLoginCheckBox.Checked)
             {
                 LoginButton_Click(this, new EventArgs());
             }
         }
+
+        private async Task getStatus()
+        {
+            WifiManager wifi = (WifiManager)GetSystemService(Context.WifiService);
+            if (wifi.ConnectionInfo.SSID.Contains(Shared.ScutStudentClient.wifiSsid))
+            {
+                errorText.Text = string.Empty;
+                await client.TryGetStatus();
+            }
+            else
+            {
+                client.ResetStatus();
+                errorText.Text = $"尚未连接{Shared.ScutStudentClient.wifiSsid}";
+            }
+            syncStatus();
+        }
+
         protected override void OnStop()
         {
             base.OnStop();
@@ -81,9 +89,20 @@ namespace ScutLogin.Droid
                 case Resource.Id.about:
                     openAbout();
                     return true;
+                case Resource.Id.refresh:
+                    refreshStatus();
+                    return true;
                 default:
                     return base.OnOptionsItemSelected(item);
             }
+        }
+
+        private async void refreshStatus()
+        {
+            statusText.Text = "正在检测";
+            loginButton.Enabled = false;
+            logoutButton.Enabled = false;
+            await getStatus();
         }
 
         private void openAbout()
@@ -132,7 +151,7 @@ namespace ScutLogin.Droid
         {
             statusText.Text = "正在注销";
             errorText.Text = string.Empty;
-
+            logoutButton.Enabled = false;
 
             try
             {
@@ -171,6 +190,7 @@ namespace ScutLogin.Droid
             }
             else if (status == Shared.ScutStudentClientStatus.LoggedIn)
             {
+                logoutButton.Enabled = true;
                 loginButton.Visibility = ViewStates.Gone;
                 logoutButton.Visibility = ViewStates.Visible;
             }
@@ -197,7 +217,7 @@ namespace ScutLogin.Droid
 
             statusText.Text = "正在登录";
             errorText.Text = string.Empty;
-
+            loginButton.Enabled = false;
             try
             {
                 await client.Login(userNameEdit.Text, passwordEdit.Text);
