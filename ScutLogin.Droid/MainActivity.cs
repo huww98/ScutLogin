@@ -7,7 +7,7 @@ using Android.Views;
 
 namespace ScutLogin.Droid
 {
-    [Activity(Label = "宿舍WLAN", MainLauncher = true, Icon = "@drawable/logo",LaunchMode =Android.Content.PM.LaunchMode.SingleTop)]
+    [Activity(Label = "宿舍WLAN", MainLauncher = true, Icon = "@drawable/logo", LaunchMode = Android.Content.PM.LaunchMode.SingleTop)]
     public class MainActivity : Activity
     {
         public const string usernamePrefKey = "UserName",
@@ -76,7 +76,7 @@ namespace ScutLogin.Droid
             StartActivity(intent);
         }
 
-    private void initialize()
+        private void initialize()
         {
             SetContentView(Resource.Layout.Main);
             this.Title = "scut-student WLAN登录";

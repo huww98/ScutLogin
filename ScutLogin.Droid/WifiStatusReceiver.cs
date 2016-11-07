@@ -40,7 +40,7 @@ namespace ScutLogin.Droid
             if (info.IsConnected)
             {
                 WifiInfo wifiInfo = (WifiInfo)intent.GetParcelableExtra(WifiManager.ExtraWifiInfo);
-                if (wifiInfo != null && wifiInfo.SSID.IndexOf("scut-student")>0)
+                if (wifiInfo != null && wifiInfo.SSID.Contains(Shared.ScutStudentClient.wifiSsid))
                 {
                     Shared.ScutStudentClient client = new Shared.ScutStudentClient();
                     await client.TryGetStatus();

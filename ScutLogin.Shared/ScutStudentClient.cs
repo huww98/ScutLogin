@@ -18,6 +18,7 @@ namespace ScutLogin.Shared
             var handler = new HttpClientHandler() { AllowAutoRedirect = false };
             httpClient = new HttpClient(handler);
         }
+        public const string wifiSsid = "scut-student";
         private const string authenticationUrlTemplate = "https://s.scut.edu.cn:801/eportal/?c=ACSetting&a={0}&wlanuserip={1}&wlanacip={2}&wlanacname=&redirect=&session=&vlanid=scut-student&port=&iTermType=1&protocol=https:";
         private const string errorCodeUrl = "https://s.scut.edu.cn/errcode";
         private const string testIfNeedLoginUrl = "http://www.baidu.com/";

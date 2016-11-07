@@ -18,19 +18,19 @@ namespace ScutLogin.Shared
 
             var regx83 = "userid error3";
             var regx83_0 = "userid error2";
-            if (http.IndexOf(regx83) > 0 || http.IndexOf(regx83_0) > 0)
+            if (http.Contains(regx83) || http.Contains(regx83_0))
             {
                 return ScutStudentLoginError.UserNameOrPasswordIncorrect;
             }
 
             var regx16 = "Rpost=2;ret='Authentication Fail ErrCode=16'";
-            if (http.IndexOf(regx16) > 0)
+            if (http.Contains(regx16))
             {
                 return ScutStudentLoginError.TimePeriodProhibited;
             }
 
             var regx55 = "In use";
-            if (http.IndexOf(regx55) > 0)
+            if (http.Contains(regx55))
             {
                 return ScutStudentLoginError.UsersMoreThanLimit;
             }
