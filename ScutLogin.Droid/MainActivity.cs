@@ -35,7 +35,13 @@ namespace ScutLogin.Droid
             initialize();
 
             sharedPref = this.GetSharedPreferences(PrefName, FileCreationMode.Private);
+
+#if DEBUG
+            userNameEdit.Text = sharedPref.GetString(usernamePrefKey, "201630676713");
+#else
             userNameEdit.Text = sharedPref.GetString(usernamePrefKey, string.Empty);
+#endif
+
             passwordEdit.Text = sharedPref.GetString(passwordPrefKey, string.Empty);
             savePasswordCheckBox.Checked = sharedPref.GetBoolean(ifSavePasswordPrefKey, false);
             autoLoginCheckBox.Checked = sharedPref.GetBoolean(ifAutoLoginPrefKey, false);
@@ -132,7 +138,12 @@ namespace ScutLogin.Droid
             {
                 if (string.IsNullOrEmpty(client.WlanAcIp))
                 {
+#if DEBUG//WLAN AC IP in C10, added for test purpose.
+                    client.WlanAcIp = sharedPref.GetString(wlanAcIpPrefKey, "172.21.255.251");
+#else
                     client.WlanAcIp = sharedPref.GetString(wlanAcIpPrefKey, string.Empty);
+#endif
+
                     if (string.IsNullOrEmpty(client.WlanAcIp))
                     {
                         throw new InvalidOperationException("需要登录信息以注销，请至少成功登录一次");
