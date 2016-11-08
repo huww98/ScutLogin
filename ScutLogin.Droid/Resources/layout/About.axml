@@ -12,20 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="300dp" />
     <TextView
-        android:text="Developed By: 胡玮文\n华南理工大学16级软件工程"
+        android:text="@string/developer"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_margin="16dp"
-        android:singleLine="false"/>
+        android:singleLine="false" />
+    <TextView
+        android:text="@string/version"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:singleLine="false" />
   <TextView
-    android:text="@string/version"
+    android:text="@string/openSourceInfo"
     android:textAppearance="?android:attr/textAppearanceSmall"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:layout_margin="16dp"
-    android:singleLine="false"/>
-
+    android:singleLine="false" />
 </LinearLayout>

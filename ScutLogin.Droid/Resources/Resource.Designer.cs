@@ -156,6 +156,12 @@ namespace ScutLogin.Droid
 			// aapt resource value: 0x7f040001
 			public const int about = 2130968577;
 			
+			// aapt resource value: 0x7f040004
+			public const int developer = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int openSourceInfo = 2130968581;
+			
 			// aapt resource value: 0x7f040003
 			public const int refreshStatus = 2130968579;
 			

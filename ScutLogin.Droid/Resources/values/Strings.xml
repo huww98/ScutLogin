@@ -4,4 +4,6 @@
   <string name="about">关于</string>
   <string name="version">版本：1.2</string>
   <string name="refreshStatus">刷新状态</string>
+  <string name="developer">Developed By: 胡玮文\n华南理工大学16级软件工程\n如需支持，请联系: huww98@163.com</string>
+  <string name="openSourceInfo">本项目开源于: \nhttps://github.com/huww98/ScutLogin</string>
 </resources>
