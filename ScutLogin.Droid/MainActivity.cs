@@ -37,12 +37,9 @@ namespace ScutLogin.Droid
 
             sharedPref = this.GetSharedPreferences(PrefName, FileCreationMode.Private);
 
-#if DEBUG
-            userNameEdit.Text = sharedPref.GetString(usernamePrefKey, "201630676713");
-#else
-            userNameEdit.Text = sharedPref.GetString(usernamePrefKey, string.Empty);
-#endif
-            passwordEdit.Text = sharedPref.GetString(passwordPrefKey, string.Empty);
+
+            userNameEdit.Text = sharedPref.GetString(usernamePrefKey, Shared.DefaultLoginInfo.UserName);
+            passwordEdit.Text = sharedPref.GetString(passwordPrefKey, Shared.DefaultLoginInfo.Password);
             savePasswordCheckBox.Checked = sharedPref.GetBoolean(ifSavePasswordPrefKey, false);
             autoLoginCheckBox.Checked = sharedPref.GetBoolean(ifAutoLoginPrefKey, false);
 
@@ -157,11 +154,7 @@ namespace ScutLogin.Droid
             {
                 if (string.IsNullOrEmpty(client.WlanAcIp))
                 {
-#if DEBUG//WLAN AC IP in C10, added for test purpose.
-                    client.WlanAcIp = sharedPref.GetString(wlanAcIpPrefKey, "172.21.255.251");
-#else
-                    client.WlanAcIp = sharedPref.GetString(wlanAcIpPrefKey, string.Empty);
-#endif
+                    client.WlanAcIp = sharedPref.GetString(wlanAcIpPrefKey, Shared.DefaultLoginInfo.WlanAcIp);
 
                     if (string.IsNullOrEmpty(client.WlanAcIp))
                     {

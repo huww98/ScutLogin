@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -9,6 +9,7 @@
     <Import_RootNamespace>ScutLogin.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultLoginInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScutStudentClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScutStudentLoginErrorHelper.cs" />
   </ItemGroup>
