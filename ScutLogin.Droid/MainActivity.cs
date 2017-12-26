@@ -33,7 +33,7 @@ namespace ScutLogin.Droid
         protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            initialize();
+            Initialize();
 
             sharedPref = this.GetSharedPreferences(PrefName, FileCreationMode.Private);
 
@@ -43,7 +43,7 @@ namespace ScutLogin.Droid
             savePasswordCheckBox.Checked = sharedPref.GetBoolean(ifSavePasswordPrefKey, false);
             autoLoginCheckBox.Checked = sharedPref.GetBoolean(ifAutoLoginPrefKey, false);
 
-            await getStatus();
+            await GetStatus();
 
             if (client.Status == Shared.ScutStudentClientStatus.NeedLogin && autoLoginCheckBox.Checked)
             {
@@ -51,7 +51,7 @@ namespace ScutLogin.Droid
             }
         }
 
-        private async Task getStatus()
+        private async Task GetStatus()
         {
             WifiManager wifi = (WifiManager)GetSystemService(Context.WifiService);
             if (wifi.ConnectionInfo.SSID.Contains(Shared.ScutStudentClient.wifiSsid))
@@ -64,13 +64,13 @@ namespace ScutLogin.Droid
                 client.ResetStatus();
                 errorText.Text = $"尚未连接{Shared.ScutStudentClient.wifiSsid}";
             }
-            syncStatus();
+            SyncStatus();
         }
 
         protected override void OnStop()
         {
             base.OnStop();
-            updatePref();
+            UpdatePref();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -84,31 +84,31 @@ namespace ScutLogin.Droid
             switch (item.ItemId)
             {
                 case Resource.Id.about:
-                    openAbout();
+                    OpenAbout();
                     return true;
                 case Resource.Id.refresh:
-                    refreshStatus();
+                    RefreshStatus();
                     return true;
                 default:
                     return base.OnOptionsItemSelected(item);
             }
         }
 
-        private async void refreshStatus()
+        private async void RefreshStatus()
         {
             statusText.Text = "正在检测";
             loginButton.Enabled = false;
             logoutButton.Enabled = false;
-            await getStatus();
+            await GetStatus();
         }
 
-        private void openAbout()
+        private void OpenAbout()
         {
             Intent intent = new Intent(this, typeof(AboutActivity));
             StartActivity(intent);
         }
 
-        private void initialize()
+        private void Initialize()
         {
             SetContentView(Resource.Layout.Main);
             this.Title = "scut-student WLAN登录";
@@ -167,11 +167,11 @@ namespace ScutLogin.Droid
             {
                 errorText.Text = ex.Message;
             }
-            syncStatus();
+            SyncStatus();
 
         }
 
-        private void syncStatus()
+        private void SyncStatus()
         {
             var status = client.Status;
             statusText.Text = Shared.ScutStudentLoginErrorHelper.GetStatusHelpText(status);
@@ -220,10 +220,10 @@ namespace ScutLogin.Droid
             {
                 errorText.Text = ex.Message;
             }
-            syncStatus();
+            SyncStatus();
         }
 
-        private void updatePref()
+        private void UpdatePref()
         {
             var editor = sharedPref.Edit();
             editor.PutString(usernamePrefKey, userNameEdit.Text);

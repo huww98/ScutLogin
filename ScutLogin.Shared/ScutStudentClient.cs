@@ -54,7 +54,7 @@ namespace ScutLogin.Shared
 
         public async Task<ScutStudentClientStatus> TryGetStatus()
         {
-            await testInternet();
+            await TestInternet();
             if (Status==ScutStudentClientStatus.InternetConnected)
             {
                 try
@@ -64,7 +64,7 @@ namespace ScutLogin.Shared
                         if (response.StatusCode==HttpStatusCode.Redirect)
                         {
                             Status = ScutStudentClientStatus.LoggedIn;
-                            var query = getQueryFromUrl(response.Headers.Location);
+                            var query = GetQueryFromUrl(response.Headers.Location);
                             UserIp = query["wlanuserip"];
                         }
                     }
@@ -81,7 +81,7 @@ namespace ScutLogin.Shared
             Status = ScutStudentClientStatus.Unknown;
         }
 
-        private async Task testInternet()
+        private async Task TestInternet()
         {
             try
             {
@@ -109,9 +109,9 @@ namespace ScutLogin.Shared
                     Status = ScutStudentClientStatus.Unknown;
                     return;
                 }
-                var query = getQueryFromUrl(redirectUrl);
+                var query = GetQueryFromUrl(redirectUrl);
                 UserIp = query["source-address"];
-                WlanAcIp = query["nasip"];
+                WlanAcIp = query["wlanacip"];
                 Status = ScutStudentClientStatus.NeedLogin;
                 return;
             }
@@ -122,7 +122,7 @@ namespace ScutLogin.Shared
             }
         }
 
-        private static Dictionary<string, string> getQueryFromUrl(Uri redirectUrl)
+        private static Dictionary<string, string> GetQueryFromUrl(Uri redirectUrl)
         {
             return redirectUrl.Query.Substring(1).Split('&')
                                             .Select(s => s.Split('='))
